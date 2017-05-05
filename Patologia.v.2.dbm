@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.7.0-alpha" author="Suly">
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="patologia" rect-visible="true" fill-color="#006ea5">
+	<comment><![CDATA[Schema de patologia]]></comment>
+</schema>
+
+<database name="SG Soft">
+	<comment><![CDATA[Base de datos S&G Soft]]></comment>
+</database>
+
+<table name="usuario">
+	<schema name="patologia"/>
+	<comment><![CDATA[Guarda el nombre de usuario y su clave]]></comment>
+	<position x="35" y="35"/>
+	<column name="idusuario" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial de el usuario]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del usuario]]></comment>
+	</column>
+	<column name="clave" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[clave de el usuario]]></comment>
+	</column>
+</table>
+
+<table name="empleado">
+	<schema name="patologia"/>
+	<comment><![CDATA[Guarda los datos del empleado]]></comment>
+	<position x="79" y="209"/>
+	<column name="idempleado" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial de el empleado]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre de el empleado]]></comment>
+	</column>
+	<column name="apellido" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Apellido de el empleado]]></comment>
+	</column>
+	<column name="telefono">
+		<type name="char" length="10"/>
+		<comment><![CDATA[numero de telefono de empleado]]></comment>
+	</column>
+	<column name="idtipo_cargo" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[cargo que tiene el empleado]]></comment>
+	</column>
+	<column name="idsexo" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[sexo del empleado]]></comment>
+	</column>
+</table>
+
+<table name="tipo_cargo">
+	<schema name="patologia"/>
+	<comment><![CDATA[Guarda el tipo de cargo del empleado]]></comment>
+	<position x="353" y="139"/>
+	<column name="idtipo_cargo" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial de tipo de cargo]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="45"/>
+		<comment><![CDATA[nombre del cargo]]></comment>
+	</column>
+</table>
+
+<table name="sexo">
+	<schema name="patologia"/>
+	<comment><![CDATA[Guarda el sexo de las personas]]></comment>
+	<position x="390.636" y="368.818"/>
+	<column name="idsexo" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del sexo]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[nombre del sexo]]></comment>
+	</column>
+</table>
+
+<table name="aseguradora">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos de la aseguradora de salud]]></comment>
+	<position x="586" y="41"/>
+	<column name="idaseguradora" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial de la aseguradora]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre de la aseguradora]]></comment>
+	</column>
+	<column name="direccion">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[direccion de la aseguradora]]></comment>
+	</column>
+	<column name="telefono" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[telefono de la aseguradora]]></comment>
+	</column>
+</table>
+
+<table name="tipo_paciente">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los tipos de paciente]]></comment>
+	<position x="476" y="280"/>
+	<column name="idtipo_paciente" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del tipo de paciente]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del tipo de paciente]]></comment>
+	</column>
+</table>
+
+<table name="paciente">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos de paciente]]></comment>
+	<position x="789" y="192"/>
+	<column name="idpaciente" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del paciente]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del paciente]]></comment>
+	</column>
+	<column name="apellido" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[apellido del paciente]]></comment>
+	</column>
+	<column name="telefono" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[telefono del paciente]]></comment>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[direccion del paciente]]></comment>
+	</column>
+	<column name="fecha_nacimiento" not-null="true">
+		<type name="date"/>
+		<comment><![CDATA[fecha de nacimiento del paciente]]></comment>
+	</column>
+	<column name="idtipo_paciente" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[tipo de paciente]]></comment>
+	</column>
+	<column name="idsexo" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[sexo del paciente]]></comment>
+	</column>
+	<column name="idaseguradora" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[aseguradora del paciente]]></comment>
+	</column>
+	<column name="num_poliza" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[numero de la poliza de la aseguradora del paciente]]></comment>
+	</column>
+</table>
+
+<table name="especialidad">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos de la especialidad]]></comment>
+	<position x="68.8182" y="513"/>
+	<column name="idespecialidad" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial de la especialidad]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="45"/>
+		<comment><![CDATA[nombre de la especialidad]]></comment>
+	</column>
+</table>
+
+<table name="centro_medico">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos de centros medicos del medico]]></comment>
+	<position x="857.273" y="510.909"/>
+	<column name="idcentro_medico" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial centro medico]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="45"/>
+		<comment><![CDATA[nombre del centro medico]]></comment>
+	</column>
+	<column name="direccion" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[direccon del centro medico]]></comment>
+	</column>
+	<column name="telefono" not-null="true">
+		<type name="varchar" length="10"/>
+		<comment><![CDATA[telefono del centro medico]]></comment>
+	</column>
+</table>
+
+<table name="medico">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda datos del medico]]></comment>
+	<position x="531.818" y="484.546"/>
+	<column name="idmedico" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del medico]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del medico]]></comment>
+	</column>
+	<column name="apellido" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[apellido del medico]]></comment>
+	</column>
+	<column name="idespecialidad" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[id de la especialidad del medico]]></comment>
+	</column>
+	<column name="idcentro_medico" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[centro medico donde trabaja el medico]]></comment>
+	</column>
+</table>
+
+<table name="estado_fragmento">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda el estado de el fragmento]]></comment>
+	<position x="239.091" y="676.364"/>
+	<column name="idestado_fragmento" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial estado del fragmento]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="15"/>
+		<comment><![CDATA[nombre del estado del fragmento]]></comment>
+	</column>
+</table>
+
+<table name="tipo_fragmento">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos del tipo de fragmento]]></comment>
+	<position x="230.909" y="832.727"/>
+	<column name="idtipo_fragmento" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del tipo de fragmento]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del tipo de fragmento]]></comment>
+	</column>
+</table>
+
+<table name="fragmento">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos del fragmento]]></comment>
+	<position x="589.091" y="750"/>
+	<column name="idfragmento" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serail del fragmento]]></comment>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="timestamp" with-timezone="true"/>
+		<comment><![CDATA[fecha y hora de la entrada del fragmento]]></comment>
+	</column>
+	<column name="idpaciente" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[paciente del fragmento]]></comment>
+	</column>
+	<column name="idmedico" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[medico del paciente]]></comment>
+	</column>
+	<column name="idempleado" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[empleado que digita el fragmento]]></comment>
+	</column>
+	<column name="idtipo_fragmento" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[tipo de fragmento]]></comment>
+	</column>
+	<column name="idestado_fragmento" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[estado del fragmento]]></comment>
+	</column>
+	<column name="origen" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[origen del fragmento]]></comment>
+	</column>
+	<column name="forma" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[forma del fragmento]]></comment>
+	</column>
+	<column name="estructura" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[estructura del fragmento]]></comment>
+	</column>
+	<column name="peso" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[peso del fragmento]]></comment>
+	</column>
+	<column name="color" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[color del fragmento]]></comment>
+	</column>
+	<column name="dimension" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[dimension del fragmento]]></comment>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[descripcion general del fragmento]]></comment>
+	</column>
+	<column name="diagnostico" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[diagnostico del fragmento]]></comment>
+	</column>
+</table>
+
+<table name="metodo">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda el metodo utilizado en el fragmento]]></comment>
+	<position x="70" y="910.909"/>
+	<column name="idmetodo" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del metodo]]></comment>
+	</column>
+	<column name="descripcion" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[descripcion del metodo]]></comment>
+	</column>
+	<column name="idtipo_medico" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[tipo de metodo]]></comment>
+	</column>
+	<column name="idempleado" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[empleado que entro el metodo]]></comment>
+	</column>
+</table>
+
+<table name="tipo_metodo">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los tipos de metodos]]></comment>
+	<position x="61.8182" y="1158.18"/>
+	<column name="idtipo_medico" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del tipo de medico]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del tipo de metodo]]></comment>
+	</column>
+</table>
+
+<table name="patologo">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos del patologo]]></comment>
+	<position x="482.727" y="1080"/>
+	<column name="idpatologo" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del patologo]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del patologo]]></comment>
+	</column>
+	<column name="apellido" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[apellido del patologo]]></comment>
+	</column>
+</table>
+
+<table name="accion_tipo_estudio">
+	<schema name="patologia"/>
+	<comment><![CDATA[accion del tipo de estudio]]></comment>
+	<position x="30.9091" y="1256.36"/>
+	<column name="idaccion_tipo_estudio" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial accion tipo estudio]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre de la accion del tipo de estudio]]></comment>
+	</column>
+</table>
+
+<table name="tipo_estudio">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los datos del estudio]]></comment>
+	<position x="27.2727" y="1448.18"/>
+	<column name="idtipo_estudio" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serail tipo de estudio]]></comment>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[nombre del tipo de estudio]]></comment>
+	</column>
+	<column name="idaccion_tipo_estudio" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[accion del tipo de estudio]]></comment>
+	</column>
+</table>
+
+<table name="estudio">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda datos del estudio]]></comment>
+	<position x="596.364" y="1374.55"/>
+	<column name="idestudio" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial tipo estudio]]></comment>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="timestamp" with-timezone="true"/>
+		<comment><![CDATA[fecha y hora de la digitacion del estudio]]></comment>
+	</column>
+	<column name="idfragmento" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[fragmento al que se le esta haciendo el estudio]]></comment>
+	</column>
+	<column name="idpatologo" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[patologo que reviso el fragmento]]></comment>
+	</column>
+	<column name="idtipo_estudio" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[tipo de estudio ]]></comment>
+	</column>
+	<column name="idmetodo" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[metodo con el que se analizo el fragmento]]></comment>
+	</column>
+	<column name="num_reclamacion" not-null="true">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[numero de la reclamacion de la aseguradora]]></comment>
+	</column>
+</table>
+
+<table name="resultado">
+	<schema name="patologia"/>
+	<comment><![CDATA[guarda los resultados]]></comment>
+	<position x="252.727" y="1619.09"/>
+	<column name="idresultado" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[serial del resultado]]></comment>
+	</column>
+	<column name="fecha" not-null="true">
+		<type name="timestamp" with-timezone="true"/>
+		<comment><![CDATA[fecha y hora en la cual se digito el resultado]]></comment>
+	</column>
+	<column name="idempleado" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[empleado que entra el resultado]]></comment>
+	</column>
+	<column name="idestudio" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[estudio realizado al fragmento del paciente]]></comment>
+	</column>
+	<column name="idmetodo" not-null="true">
+		<type name="smallint"/>
+		<comment><![CDATA[metodo utiliado en el estudio]]></comment>
+	</column>
+	<column name="etiologia" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[etiologia del resultado]]></comment>
+	</column>
+	<column name="patogenia" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[patogenia del resultado]]></comment>
+	</column>
+	<column name="cambio_morfologico" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[cambio morfologico en el resultado]]></comment>
+	</column>
+	<column name="manifestacion_clinica" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[manifestacion clinica en el resultado]]></comment>
+	</column>
+	<column name="recomendacion" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[recomendacion en el resultado]]></comment>
+	</column>
+	<column name="aviso" not-null="true">
+		<type name="text"/>
+		<comment><![CDATA[aviso en el resultado]]></comment>
+	</column>
+</table>
+
+<constraint name="idtipo_cargo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.tipo_cargo" table="patologia.empleado">
+	<columns names="idtipo_cargo" ref-type="src-columns"/>
+	<columns names="idtipo_cargo" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de tipo_cargo]]></comment>
+</constraint>
+<constraint name="idsexo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.sexo" table="patologia.empleado">
+	<columns names="idsexo" ref-type="src-columns"/>
+	<columns names="idsexo" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de sexo]]></comment>
+</constraint>
+<constraint name="idtipo_paciente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.tipo_paciente" table="patologia.paciente">
+	<columns names="idtipo_paciente" ref-type="src-columns"/>
+	<columns names="idtipo_paciente" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de tipo_paciente]]></comment>
+</constraint>
+<constraint name="idsexo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.sexo" table="patologia.paciente">
+	<columns names="idsexo" ref-type="src-columns"/>
+	<columns names="idsexo" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de sexo]]></comment>
+</constraint>
+<constraint name="idaseguradora" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.aseguradora" table="patologia.paciente">
+	<columns names="idaseguradora" ref-type="src-columns"/>
+	<columns names="idaseguradora" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key aseguradora]]></comment>
+</constraint>
+<constraint name="idespecialidad" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.especialidad" table="patologia.medico">
+	<columns names="idespecialidad" ref-type="src-columns"/>
+	<columns names="idespecialidad" ref-type="dst-columns"/>
+</constraint>
+<constraint name="idcentro_medico" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.centro_medico" table="patologia.medico">
+	<columns names="idcentro_medico" ref-type="src-columns"/>
+	<columns names="idcentro_medico" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de centro medico]]></comment>
+</constraint>
+<constraint name="idpaciente" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.paciente" table="patologia.fragmento">
+	<columns names="idpaciente" ref-type="src-columns"/>
+	<columns names="idpaciente" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de paciente]]></comment>
+</constraint>
+<constraint name="idmedico" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.medico" table="patologia.fragmento">
+	<columns names="idmedico" ref-type="src-columns"/>
+	<columns names="idmedico" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de medico]]></comment>
+</constraint>
+<constraint name="idempleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.empleado" table="patologia.fragmento">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de empleado]]></comment>
+</constraint>
+<constraint name="idtipo_fragmento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.tipo_fragmento" table="patologia.fragmento">
+	<columns names="idtipo_fragmento" ref-type="src-columns"/>
+	<columns names="idtipo_fragmento" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de tipo de fragmento]]></comment>
+</constraint>
+<constraint name="idestado_fragmento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.estado_fragmento" table="patologia.fragmento">
+	<columns names="idestado_fragmento" ref-type="src-columns"/>
+	<columns names="idestado_fragmento" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key del estado del fragmento]]></comment>
+</constraint>
+<constraint name="idtipo_metodo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.tipo_metodo" table="patologia.metodo">
+	<columns names="idtipo_medico" ref-type="src-columns"/>
+	<columns names="idtipo_medico" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key tipo de medico]]></comment>
+</constraint>
+<constraint name="idempleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.empleado" table="patologia.metodo">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de empleado]]></comment>
+</constraint>
+<constraint name="idaccion_tipo_estudio" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.accion_tipo_estudio" table="patologia.tipo_estudio">
+	<columns names="idaccion_tipo_estudio" ref-type="src-columns"/>
+	<columns names="idaccion_tipo_estudio" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key taccion_tipo_estudio]]></comment>
+</constraint>
+<constraint name="idfragmento" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.fragmento" table="patologia.estudio">
+	<columns names="idpatologo" ref-type="src-columns"/>
+	<columns names="idfragmento" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key del fragmento]]></comment>
+</constraint>
+<constraint name="idpatologo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.patologo" table="patologia.estudio">
+	<columns names="idpatologo" ref-type="src-columns"/>
+	<columns names="idpatologo" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de patologo]]></comment>
+</constraint>
+<constraint name="idtipo_estudio" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.tipo_estudio" table="patologia.estudio">
+	<columns names="idtipo_estudio" ref-type="src-columns"/>
+	<columns names="idtipo_estudio" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de tipo de estudio]]></comment>
+</constraint>
+<constraint name="idmetodo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.metodo" table="patologia.estudio">
+	<columns names="idmetodo" ref-type="src-columns"/>
+	<columns names="idmetodo" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de metodo]]></comment>
+</constraint>
+<constraint name="idempleado" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.empleado" table="patologia.resultado">
+	<columns names="idempleado" ref-type="src-columns"/>
+	<columns names="idempleado" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh key de empleado]]></comment>
+</constraint>
+<constraint name="idestudio" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.estudio" table="patologia.resultado">
+	<columns names="idestudio" ref-type="src-columns"/>
+	<columns names="idestudio" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh kkey de estudio]]></comment>
+</constraint>
+<constraint name="idmetodo" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="patologia.metodo" table="patologia.resultado">
+	<columns names="idmetodo" ref-type="src-columns"/>
+	<columns names="idmetodo" ref-type="dst-columns"/>
+		<comment><![CDATA[foreingh kkey de metodo]]></comment>
+</constraint>
+<relationship name="rel_empleado_tipo_cargo" type="relfk"
+	 src-table="patologia.empleado"
+	 dst-table="patologia.tipo_cargo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_empleado_sexo" type="relfk"
+	 src-table="patologia.empleado"
+	 dst-table="patologia.sexo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_paciente_tipo_paciente" type="relfk"
+	 src-table="patologia.paciente"
+	 dst-table="patologia.tipo_paciente"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_paciente_sexo" type="relfk"
+	 src-table="patologia.paciente"
+	 dst-table="patologia.sexo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_paciente_aseguradora" type="relfk"
+	 src-table="patologia.paciente"
+	 dst-table="patologia.aseguradora"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_medico_especialidad" type="relfk"
+	 src-table="patologia.medico"
+	 dst-table="patologia.especialidad"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_medico_centro_medico" type="relfk"
+	 src-table="patologia.medico"
+	 dst-table="patologia.centro_medico"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_fragmento_paciente" type="relfk"
+	 src-table="patologia.fragmento"
+	 dst-table="patologia.paciente"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_fragmento_medico" type="relfk"
+	 src-table="patologia.fragmento"
+	 dst-table="patologia.medico"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_fragmento_empleado" type="relfk"
+	 src-table="patologia.fragmento"
+	 dst-table="patologia.empleado"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_fragmento_tipo_fragmento" type="relfk"
+	 src-table="patologia.fragmento"
+	 dst-table="patologia.tipo_fragmento"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_fragmento_estado_fragmento" type="relfk"
+	 src-table="patologia.fragmento"
+	 dst-table="patologia.estado_fragmento"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_metodo_tipo_metodo" type="relfk"
+	 src-table="patologia.metodo"
+	 dst-table="patologia.tipo_metodo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_metodo_empleado" type="relfk"
+	 src-table="patologia.metodo"
+	 dst-table="patologia.empleado"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tipo_estudio_accion_tipo_estudio" type="relfk"
+	 src-table="patologia.tipo_estudio"
+	 dst-table="patologia.accion_tipo_estudio"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_estudio_fragmento" type="relfk"
+	 src-table="patologia.estudio"
+	 dst-table="patologia.fragmento"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_estudio_patologo" type="relfk"
+	 src-table="patologia.estudio"
+	 dst-table="patologia.patologo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_estudio_tipo_estudio" type="relfk"
+	 src-table="patologia.estudio"
+	 dst-table="patologia.tipo_estudio"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_estudio_metodo" type="relfk"
+	 src-table="patologia.estudio"
+	 dst-table="patologia.metodo"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_resultado_empleado" type="relfk"
+	 src-table="patologia.resultado"
+	 dst-table="patologia.empleado"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_resultado_estudio" type="relfk"
+	 src-table="patologia.resultado"
+	 dst-table="patologia.estudio"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_resultado_metodo" type="relfk"
+	 src-table="patologia.resultado"
+	 dst-table="patologia.metodo"
+	 src-required="true" dst-required="true"/>
+
+</dbmodel>

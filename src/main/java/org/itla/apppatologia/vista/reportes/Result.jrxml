@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ff7802b-a91a-4456-b362-c3af97cb92c5">
+	<property name="ireport.zoom" value="0.8264462809917354"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_est" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+	res.idresultado,
+	res.fecha FECHA_RES,
+	res.etiologia ETIOLOGIA_RES,
+	res.patogenia PATOLOGIA_RES,
+	res.cambio_morfologico CAMBIO_RES,
+	res.manifestacion_clinica MANIFESTACION_RES,
+	res.recomendacion RECOMENDACION_RES,
+	res.aviso AVISO_RES,
+	obs.descripcion DESCRIPCION_OBS,
+	tob.nombre NOMBRE_TIPO_OBSERVACION,
+	est.idestudio ESTUDIO,
+	est.fecha FECHA_EST,
+	est.num_reclamacion NUM_RECLAMACION_EST,
+	tes.precio PRECIO,
+	pat.nombre NOMBRE_PATOLOGO,
+	frg.idfragmento ID_FRAGMENTO,
+	frg.origen ORIGEN_FRAGMENTO,
+	frs.idfrasco ID_FRASCO,
+	pac.nombre NOMBRE_PACIENTE,
+	pac.apellido APELLIDO_PACIENTE,
+	pac.fecha_nacimiento FECHA_NACIMIENTO_PACIENTE,
+
+	cas.numero_reclamacion NUMERO_RECLAMACION_CASO,
+	emp.nombre NOMBRE_EMPLEADO,
+	emp.apellido APELLIDO_EMPLEADO,
+	med.nombre NOMBRE_MEDICO,
+	reg.fecha FECHA_REGISTRO
+
+
+FROM patologia.resultado res
+
+INNER JOIN patologia.observacion obs
+	ON res.idresultado = obs.idresultado_resultado
+INNER JOIN patologia.tipo_observacion tob
+	ON obs.idtipo_observacion_tipo_observacion = tob.idtipo_observacion
+INNER JOIN patologia.estudio est
+	ON res.idestudio_estudio = est.idestudio
+INNER JOIN patologia.tipo_estudio tes
+	ON est.idtipo_estudio_tipo_estudio = tes.idtipo_estudio
+INNER JOIN patologia.patologo pat
+	ON pat.idpatologo = est.idpatologo_patologo
+INNER JOIN patologia.fragmento frg
+	ON est.idfragmento_fragmento = frg.idfragmento
+INNER JOIN patologia.frasco frs
+	ON frg.idfrasco_frasco = frs.idfrasco
+INNER JOIN patologia.paciente pac
+	ON frs.idpaciente_paciente = pac.idpaciente
+INNER JOIN patologia.caso cas
+	ON cas.idpaciente_paciente = pac.idpaciente
+INNER JOIN patologia.registro reg
+	ON reg.idcaso_caso = cas.idcaso
+INNER JOIN patologia.empleado emp
+	ON emp.idempleado = reg.idempleado_empleado
+INNER JOIN patologia.medico med
+	ON frg.idmedico_medico = med.idmedico
+WHERE est.idestudio = $P{id_est}]]>
+	</queryString>
+	<field name="idresultado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del resultado]]></fieldDescription>
+	</field>
+	<field name="fecha_res" class="java.sql.Timestamp"/>
+	<field name="etiologia_res" class="java.lang.String"/>
+	<field name="patologia_res" class="java.lang.String"/>
+	<field name="cambio_res" class="java.lang.String"/>
+	<field name="manifestacion_res" class="java.lang.String"/>
+	<field name="recomendacion_res" class="java.lang.String"/>
+	<field name="aviso_res" class="java.lang.String"/>
+	<field name="descripcion_obs" class="java.lang.String"/>
+	<field name="nombre_tipo_observacion" class="java.lang.String"/>
+	<field name="estudio" class="java.lang.Integer"/>
+	<field name="fecha_est" class="java.sql.Timestamp"/>
+	<field name="num_reclamacion_est" class="java.lang.String"/>
+	<field name="precio" class="java.lang.Double"/>
+	<field name="nombre_patologo" class="java.lang.String"/>
+	<field name="id_fragmento" class="java.lang.Integer"/>
+	<field name="origen_fragmento" class="java.lang.String"/>
+	<field name="id_frasco" class="java.lang.Integer"/>
+	<field name="nombre_paciente" class="java.lang.String"/>
+	<field name="apellido_paciente" class="java.lang.String"/>
+	<field name="fecha_nacimiento_paciente" class="java.sql.Date"/>
+	<field name="numero_reclamacion_caso" class="java.lang.String"/>
+	<field name="nombre_empleado" class="java.lang.String"/>
+	<field name="apellido_empleado" class="java.lang.String"/>
+	<field name="nombre_medico" class="java.lang.String"/>
+	<field name="fecha_registro" class="java.sql.Timestamp"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#FF66CC" uuid="954fd3ca-84d3-4e7d-8b01-297dc189e850"/>
+				<staticText>
+					<reportElement x="10" y="10" width="234" height="43" forecolor="#FFFFFF" uuid="825637c0-ed1b-4563-a219-76e3d0371df1"/>
+					<textElement>
+						<font fontName="Harlow Solid Italic" size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pathosystem]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="385" y="40" width="180" height="31" forecolor="#FFFFFF" uuid="14b1caca-6306-4b68-b65e-0dc56080f6d5"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[RESULTADO]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="95">
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="10" width="84" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="d31cd7ff-facc-444f-9b05-8ceaf312a71b"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paciente]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="94" y="10" width="126" height="20" uuid="51c8db40-36f3-457b-a485-31313e71fed7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_paciente}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="94" y="50" width="126" height="20" uuid="003a71d1-3ca6-40ff-a694-2ac5c1f45c0b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_registro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="30" width="84" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="6ae90810-31b3-456d-959b-b47f76a361d5"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="69" width="84" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="3f2688a6-24fd-4e6e-be8a-e087efc05c2e"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="50" width="84" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="83414deb-d5be-4c27-b245-4a3b97f8cda6"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entreda]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="94" y="30" width="126" height="20" uuid="1890fcee-6a67-40d7-b4fb-ce1724973a95"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_medico}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="94" y="70" width="126" height="20" uuid="dbd5a643-81f5-48c0-b09a-877fb6b7c9ef"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_res}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="430" y="70" width="124" height="20" uuid="7cec4b57-ca45-46f2-ac70-6bb47da69c94"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_reclamacion_est}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="419" y="50" width="124" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="1ce80e5d-4de7-4b55-8d72-382fe233249d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Reclamación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="419" y="10" width="63" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="94b88b2c-b6ec-421a-816f-a5d4a566c1b9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estudio]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="430" y="30" width="124" height="20" uuid="96f0ad94-d791-4d1f-ba62-f15dd8f469c7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estudio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21"/>
+	</columnHeader>
+	<detail>
+		<band height="508">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="366" width="510" height="60" uuid="44eeb98b-f561-45fd-a232-1063d0009280"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recomendacion_res}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="2" width="535" height="20" forecolor="#006699" backcolor="#FFE7F6" uuid="7bd89fc4-87fb-4c3f-b232-7a9498bd4a5b"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="245" width="510" height="40" uuid="f6349386-38d1-4a7f-bd07-4af0dcb08683"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cambio_res}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="124" width="510" height="40" uuid="ecaf88ae-2b0a-44f1-b892-39b29a0a3f9b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{etiologia_res}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="305" width="510" height="40" uuid="e7a828e4-dab4-431d-9a97-2ea9b11477ca"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{manifestacion_res}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="96" y="2" width="173" height="20" forecolor="#006699" backcolor="#FF99FF" uuid="3879170e-0f09-4434-bd2f-5a9c780c59c8"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_tipo_observacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="81" y="84" width="173" height="20" forecolor="#006699" backcolor="#FF99FF" uuid="9086c2fc-931b-4630-80b5-6d48ed7b84fe"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_tipo_observacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="84" width="535" height="20" forecolor="#006699" backcolor="#FFE7F6" uuid="b4f1ce62-4078-4abb-b26b-7ae8e5739a89"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resultado]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="447" width="510" height="60" uuid="e5dfd222-3e57-485e-988c-0d6e57833baa"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{aviso_res}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="22" width="510" height="62" uuid="d44545b6-7daf-4193-a3c2-257435c28e42"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion_obs}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="104" width="105" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="b2c2e232-fb66-4814-ad32-a489a4eaa3c8"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etiología]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="164" width="126" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="c9c262e7-e467-46a1-a8e4-f8edd39b0842"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Patogenia]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="21" y="184" width="510" height="40" uuid="99296873-fd91-4d4a-a7b9-0033475fdc21"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{patologia_res}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="225" width="197" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="5c45d7e7-a632-4520-ac4a-8fc32664a8f9"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cambios morfologicos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="285" width="250" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="9ee01e56-e985-4456-a39e-d6ec69a2cbfc"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Manifestación clinica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="346" width="126" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="62d47834-09ca-4385-923b-47d74e1386b9"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recomendación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="21" y="427" width="116" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="82f34311-257f-40ce-8907-63b48cd2dd8c"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aviso]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="83">
+			<textField>
+				<reportElement mode="Opaque" x="-1" y="60" width="515" height="13" backcolor="#E6E6E6" uuid="a4764cc2-bd20-4cb9-9a96-9f554cefd00a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="514" y="60" width="40" height="13" backcolor="#E6E6E6" uuid="7ad23298-e6d1-41b2-bedf-708d97c0d1ce"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="-1" y="60" width="100" height="13" uuid="8819017f-eeca-4093-871e-4bdd6185429a"/>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="-1" y="39" width="555" height="20" uuid="8e7bad3b-2312-404a-b28d-7409095344b8"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_patologo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="189" y="36" width="167" height="3" uuid="1a44a893-03c2-447f-ac2a-fde0686d7282"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="431" y="11" width="123" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4e992c4c-1f3d-48f2-a163-c49e1d7cccc5"/>
+				<textElement textAlignment="Left">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[precio]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="493" y="11" width="63" height="20" uuid="2ba75acc-c8bd-4488-a314-2b24a684db05"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

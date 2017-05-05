@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.mycompany_appPatologia_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>org.itla.apppatologia.modelo.entity.Patologo_1</class>
+    <class>org.itla.apppatologia.Repository.Entrega</class>
+    <class>org.itla.apppatologia.Repository.Resultado</class>
+    <class>org.itla.apppatologia.Repository.Paciente</class>
+    <class>org.itla.apppatologia.Repository.TipoPaciente</class>
+    <class>org.itla.apppatologia.Repository.Usuario</class>
+    <class>org.itla.apppatologia.Repository.Empleado</class>
+    <class>org.itla.apppatologia.Repository.CentroMedico</class>
+    <class>org.itla.apppatologia.Repository.TipoFragmento</class>
+    <class>org.itla.apppatologia.Repository.Observacion</class>
+    <class>org.itla.apppatologia.Repository.AccionTipoEstudio</class>
+    <class>org.itla.apppatologia.Repository.Registro</class>
+    <class>org.itla.apppatologia.Repository.Patologo</class>
+    <class>org.itla.apppatologia.Repository.TipoCargo</class>
+    <class>org.itla.apppatologia.Repository.Caso</class>
+    <class>org.itla.apppatologia.Repository.Fragmento</class>
+    <class>org.itla.apppatologia.Repository.Medico</class>
+    <class>org.itla.apppatologia.Repository.Aseguradora</class>
+    <class>org.itla.apppatologia.Repository.Estudio</class>
+    <class>org.itla.apppatologia.Repository.Especialidad</class>
+    <class>org.itla.apppatologia.Repository.EstadoFragmento</class>
+    <class>org.itla.apppatologia.Repository.TipoEstudio</class>
+    <class>org.itla.apppatologia.Repository.Frasco</class>
+    <class>org.itla.apppatologia.Repository.TipoObservacion</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/SGSoft_pathosystem"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="1234"/>
+    </properties>
+  </persistence-unit>
+</persistence>

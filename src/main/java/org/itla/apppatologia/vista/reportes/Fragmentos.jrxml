@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="258c2256-1a0d-49d6-bd96-77fd6dd071c0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="registrado">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[($F{idfragmento}.intValue())>0]]></conditionExpression>
+			<style forecolor="#FF9999" backcolor="#FFCCCC">
+				<box>
+					<pen lineColor="#FF99CC"/>
+					<topPen lineColor="#FF99CC"/>
+					<leftPen lineColor="#FF99CC"/>
+					<bottomPen lineColor="#FF99CC"/>
+					<rightPen lineColor="#FF99CC"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="listo">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{idresultado}>0]]></conditionExpression>
+			<style forecolor="#FF9999" backcolor="#FFCCCC">
+				<box>
+					<pen lineColor="#FF99CC"/>
+					<topPen lineColor="#FF99CC"/>
+					<leftPen lineColor="#FF99CC"/>
+					<bottomPen lineColor="#FF99CC"/>
+					<rightPen lineColor="#FF99CC"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="entregado">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{ent}>0]]></conditionExpression>
+			<style forecolor="#FF9999" backcolor="#FFCCCC">
+				<box>
+					<pen lineColor="#FF99CC"/>
+					<topPen lineColor="#FF99CC"/>
+					<leftPen lineColor="#FF99CC"/>
+					<bottomPen lineColor="#FF99CC"/>
+					<rightPen lineColor="#FF99CC"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="asignado">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{idestudio}>0]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9999" backcolor="#FFCCCC">
+				<box>
+					<pen lineColor="#FF99CC"/>
+					<topPen lineColor="#FF99CC"/>
+					<leftPen lineColor="#FF99CC"/>
+					<bottomPen lineColor="#FF99CC"/>
+					<rightPen lineColor="#FF99CC"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+	ent.identrega,
+	res.idresultado,
+	res.fecha fecRes,
+	pat.idpatologo,
+	pat.nombre pat,
+	tip.idtipo_estudio,
+	tip.nombre nomEst,
+	est.idestudio,
+	med.idmedico,
+	med.nombre med,
+	frg.idfragmento,
+	tfg.nombre tipFra,
+	pac.idpaciente,
+	pac.nombre pac,
+	cas.idcaso ID_CASO,
+	ent.idresultado_resultado ent,
+	reg.fecha fecreg
+
+
+FROM patologia.caso cas
+
+INNER JOIN patologia.registro reg
+	ON reg.idcaso_caso = cas.idcaso
+
+
+INNER JOIN patologia.fragmento frg
+	ON frg.idfragmento = cas.idfragmento
+	AND cas.idfragmento = frg.idfragmento
+inner join patologia.tipo_fragmento tfg
+	on frg.idtipo_fragmento_tipo_fragmento = tfg.idtipo_fragmento
+inner join patologia.estado_fragmento efg
+	on frg.idestado_fragmento_estado_fragmento = efg.idestado_fragmento
+inner join patologia.medico  med
+	on med.idmedico = frg.idmedico_medico
+INNER JOIN patologia.frasco frs
+	ON frg.idfrasco_frasco = frs.idfrasco
+INNER JOIN patologia.paciente pac
+	ON frs.idpaciente_paciente = pac.idpaciente
+left JOIN patologia.estudio est
+	ON est.idfragmento_fragmento = frg.idfragmento
+left join patologia.tipo_estudio tip
+	on tip.idtipo_estudio = est.idtipo_estudio_tipo_estudio
+left join patologia.patologo pat
+	on pat.idpatologo = est.idpatologo_patologo
+left join patologia.resultado res
+	on res.idestudio_estudio = est.idestudio
+left join patologia.entrega ent
+	on ent.idresultado_resultado = res.idresultado
+
+WHERE pac.is_borrado=false]]>
+	</queryString>
+	<field name="identrega" class="java.lang.Integer">
+		<fieldDescription><![CDATA[identificador de la entrega]]></fieldDescription>
+	</field>
+	<field name="idresultado" class="java.lang.Integer"/>
+	<field name="fecres" class="java.sql.Timestamp"/>
+	<field name="idpatologo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del patologo]]></fieldDescription>
+	</field>
+	<field name="pat" class="java.lang.String"/>
+	<field name="idtipo_estudio" class="java.lang.Integer"/>
+	<field name="nomest" class="java.lang.String"/>
+	<field name="idestudio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial tipo estudio]]></fieldDescription>
+	</field>
+	<field name="idmedico" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del medico]]></fieldDescription>
+	</field>
+	<field name="med" class="java.lang.String"/>
+	<field name="idfragmento" class="java.lang.Integer"/>
+	<field name="tipfra" class="java.lang.String"/>
+	<field name="idpaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del paciente]]></fieldDescription>
+	</field>
+	<field name="pac" class="java.lang.String"/>
+	<field name="id_caso" class="java.lang.Integer"/>
+	<field name="ent" class="java.lang.Integer"/>
+	<field name="fecreg" class="java.sql.Timestamp"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="6db8a00f-571f-4e8e-bc74-e8aa20507807"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="a53e8ec0-a8ee-4d35-bf6c-c44704f38d89"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="425826ba-3a6a-4856-8f97-60c0ef4e677f"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4"/>
+	</columnHeader>
+	<detail>
+		<band height="147">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="375" y="0" width="50" height="20" uuid="3d4d0090-f121-42e7-91d2-e3dea01d723e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{identrega}!=null)?$F{identrega}:"N/A"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="425" y="0" width="50" height="20" uuid="51e5a981-6a33-4132-9cce-b8b2fc217582"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idresultado}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement style="registrado" x="50" y="109" width="100" height="20" forecolor="#CCCCCC" uuid="e74a1f44-19bd-466e-b40f-a8a7b51cfd4a"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement style="asignado" x="134" y="109" width="100" height="20" forecolor="#CCCCCC" uuid="2195f918-bbdb-4c4d-8be5-e141c4de0009"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement style="asignado" x="224" y="109" width="113" height="20" forecolor="#CCCCCC" uuid="f2a16615-93cf-40d4-b5bb-a29cb5f97ffc"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement style="listo" x="324" y="109" width="90" height="20" forecolor="#CCCCCC" uuid="58b0463c-1bc0-4619-93ce-5ce8a4100fa9"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement style="entregado" mode="Opaque" x="400" y="109" width="100" height="20" forecolor="#CCCCCC" uuid="edcda90b-b126-4004-9077-3a3d9c12c001"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="63" y="109" width="71" height="20" uuid="1eb111fc-d00c-412f-a903-344ef3509446"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGISTRADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="109" width="78" height="20" uuid="607d7133-007d-498a-b1d1-808672bd892b"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="109" width="46" height="20" uuid="b28c1982-63b2-454c-9e6c-e42a70818480"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="109" width="63" height="20" uuid="3f94a677-bbdf-4ec0-b117-b6dc960fdd41"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASIGNADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="109" width="71" height="20" uuid="d4cff069-6bf1-4058-91f7-b5d90d1c9681"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENTREGADO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="19" y="20" width="526" height="78" uuid="8aa91752-ff88-4319-a14b-df62d41925e7"/>
+				<textElement markup="html">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["El paciente <b>"+$F{pac}+"</b>"+
+(($F{idestudio}!=null)?
+    " fue enviado por el doctor <b>"+$F{med}+"</b> para realizar un <b>"+
+    $F{nomest}+"</b> al fragmento <b>"+$F{idfragmento}+" ("+$F{tipfra}+")</b>"+
+    (($F{idresultado}!=null)?
+        " al cual se generó el resultado a la fecha <b>"+$F{fecres}+"</b>"
+    :
+        "."
+    )+
+    (($F{identrega}!=null)?
+        ". Ya ha sido entregado."
+    :
+        "."
+    )
+:
+    (($F{idfragmento}!=null)?
+        " ha sido registrado a la fecha <b>"+$F{fecreg}.toGMTString()+"</b>."
+    :
+        "."
+    )
+)]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="19" y="0" width="160" height="20" uuid="214dc615-8d5e-4116-9a59-aa8697bb7cb2"/>
+				<textElement markup="html">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Caso #<b>"+$F{id_caso}+"<b>"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="136" width="555" height="1" forecolor="#FFCCFF" uuid="c7510202-3b33-4171-9ec2-9a7869898dc0"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17"/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="216" pageHeight="504" columnWidth="196" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="806dba9d-8a5e-4936-bfcc-06aab2562a04">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_caso" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select *,a.nombre nom_ase, e.nombre nom_emp from patologia.caso c
+	inner join patologia.fragmento f
+	on c.idfragmento = f.idfragmento
+	inner join patologia.paciente p
+	on c.idpaciente_paciente = p.idpaciente
+	inner join patologia.aseguradora a
+	on c.idaseguradora_aseguradora = a.idaseguradora
+	inner join patologia.registro r
+	on c.idcaso = r.idcaso_caso
+	inner join patologia.empleado e
+	on e.idempleado = r.idempleado_empleado
+where c.idcaso = $P{id_caso}]]>
+	</queryString>
+	<field name="idcaso" class="java.lang.Integer">
+		<fieldDescription><![CDATA[identificador del caso]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[estado del caso]]></fieldDescription>
+	</field>
+	<field name="numero_reclamacion" class="java.lang.String">
+		<fieldDescription><![CDATA[numero de reclamacion del caso]]></fieldDescription>
+	</field>
+	<field name="numero_poliza" class="java.lang.String">
+		<fieldDescription><![CDATA[numero de poliza]]></fieldDescription>
+	</field>
+	<field name="idpaciente_paciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del paciente]]></fieldDescription>
+	</field>
+	<field name="idaseguradora_aseguradora" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial de la aseguradora]]></fieldDescription>
+	</field>
+	<field name="is_activo" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[determina si el caso esta activo]]></fieldDescription>
+	</field>
+	<field name="porciento_cobertura" class="java.lang.Double"/>
+	<field name="idfragmento" class="java.lang.Integer"/>
+	<field name="fecha" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[fecha y hora de la entrada del fragmento]]></fieldDescription>
+	</field>
+	<field name="origen" class="java.lang.String">
+		<fieldDescription><![CDATA[origen del fragmento]]></fieldDescription>
+	</field>
+	<field name="forma" class="java.lang.String">
+		<fieldDescription><![CDATA[forma del fragmento]]></fieldDescription>
+	</field>
+	<field name="estructura" class="java.lang.String">
+		<fieldDescription><![CDATA[estructura del fragmento]]></fieldDescription>
+	</field>
+	<field name="peso" class="java.lang.String">
+		<fieldDescription><![CDATA[peso del fragmento]]></fieldDescription>
+	</field>
+	<field name="color" class="java.lang.String">
+		<fieldDescription><![CDATA[color del fragmento]]></fieldDescription>
+	</field>
+	<field name="dimension" class="java.lang.String">
+		<fieldDescription><![CDATA[dimension del fragmento]]></fieldDescription>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<fieldDescription><![CDATA[descripcion general del fragmento]]></fieldDescription>
+	</field>
+	<field name="diagnostico" class="java.lang.String">
+		<fieldDescription><![CDATA[diagnostico del fragmento]]></fieldDescription>
+	</field>
+	<field name="idfrasco_frasco" class="java.lang.Integer">
+		<fieldDescription><![CDATA[identificador del frasco]]></fieldDescription>
+	</field>
+	<field name="idmedico_medico" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del medico]]></fieldDescription>
+	</field>
+	<field name="idestado_fragmento_estado_fragmento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial estado del fragmento]]></fieldDescription>
+	</field>
+	<field name="idtipo_fragmento_tipo_fragmento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del tipo de fragmento]]></fieldDescription>
+	</field>
+	<field name="idpaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del paciente]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[nombre del paciente]]></fieldDescription>
+	</field>
+	<field name="apellido" class="java.lang.String">
+		<fieldDescription><![CDATA[apellido del paciente]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[telefono del paciente]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[direccion del paciente]]></fieldDescription>
+	</field>
+	<field name="fecha_nacimiento" class="java.sql.Date">
+		<fieldDescription><![CDATA[fecha de nacimiento del paciente]]></fieldDescription>
+	</field>
+	<field name="idtipo_paciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[tipo de paciente]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="is_borrado" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[deetermina si el paciente ha sido borrado]]></fieldDescription>
+	</field>
+	<field name="idtipo_paciente_tipo_paciente" class="java.lang.Integer"/>
+	<field name="idaseguradora" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial de la aseguradora]]></fieldDescription>
+	</field>
+	<field name="idregistro" class="java.lang.Integer">
+		<fieldDescription><![CDATA[identificador del registro de eventos]]></fieldDescription>
+	</field>
+	<field name="tabla" class="java.lang.String">
+		<fieldDescription><![CDATA[tabla del evento]]></fieldDescription>
+	</field>
+	<field name="idcaso_caso" class="java.lang.Integer">
+		<fieldDescription><![CDATA[identificador del caso]]></fieldDescription>
+	</field>
+	<field name="idempleado_empleado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial de el empleado]]></fieldDescription>
+	</field>
+	<field name="idempleado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial de el empleado]]></fieldDescription>
+	</field>
+	<field name="idtipo_cargo_tipo_cargo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial de tipo de cargo]]></fieldDescription>
+	</field>
+	<field name="pass" class="java.lang.String"/>
+	<field name="nom_ase" class="java.lang.String"/>
+	<field name="nom_emp" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="0" y="46" width="92" height="13" backcolor="#FFFFFF" uuid="c93c5b2b-df86-4655-ac79-3d77147ddc50"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Ticket#: " + $F{idcaso}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="96" y="47" width="100" height="13" uuid="2f6f7956-45a4-4559-a5a2-ea5cadd62947"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="2" width="196" height="45" uuid="c2a373f5-a221-4b84-8e7a-4931fa76bf2a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Harlow Solid Italic" size="28"/>
+				</textElement>
+				<text><![CDATA[Pathosystem]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="102" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="0" width="147" height="20" uuid="800cf766-890d-4cff-9bce-b29132cbd684"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="49" height="20" uuid="44bab8bc-2a77-4873-82ba-4773b185bc4a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paciente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="49" height="20" uuid="95f4c178-fbd5-4927-9ec8-f8bf579b311d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cédula:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="49" y="20" width="147" height="20" uuid="b6a14735-a552-4fa7-b459-920135deaf0a"/>
+				<textFieldExpression><![CDATA[$F{idpaciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="40" width="127" height="20" uuid="21ab96d3-25fe-4cab-bd9d-458250866508"/>
+				<textFieldExpression><![CDATA[$F{nom_ase}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="69" height="20" uuid="250c75d9-a207-438a-aad7-ebc1ff484eef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aseguradora: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="56" height="20" uuid="bf3f9ac7-a0e8-453f-893e-23d8fcc9689a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Póliza: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="92" height="20" uuid="947e95fc-113e-41d8-9485-fb6b7493eac9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Reclamación: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="60" width="140" height="20" uuid="bc130404-6153-4d63-8b81-735180cdc761"/>
+				<textFieldExpression><![CDATA[$F{numero_poliza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="92" y="80" width="104" height="20" uuid="e315430e-ba14-4a0e-b816-0114df08bb34"/>
+				<textFieldExpression><![CDATA[$F{numero_reclamacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="115" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="6" width="196" height="51" uuid="1f1c96bc-5861-4645-bb47-c25833113f3c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="14" y="9" width="55" height="20" uuid="1ea719da-db71-4931-a38d-39f0ad39d69e"/>
+				<text><![CDATA[Fragmento: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="9" width="107" height="20" uuid="908b740c-f692-4028-922e-9fbb3c8adb62"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idfragmento}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="25" y="29" width="151" height="20" backcolor="#FFFFFF" uuid="0fdfaba0-6bce-44e6-b0de-923c808daad5"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Para realizar " + $F{idcaso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="145" splitType="Stretch">
+			<textField>
+				<reportElement x="69" y="0" width="127" height="20" uuid="83e72369-ffaf-41d2-833f-34d5e3fecffa"/>
+				<textFieldExpression><![CDATA[$F{nom_emp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" uuid="dbe8c01f-3e66-4e76-95bf-6d442e943f85"/>
+				<text><![CDATA[Atendido por: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="36" width="196" height="16" uuid="582b1959-608d-4e78-8742-113b6216eb8c"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AVISO]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="56" y="115" width="120" height="27" backcolor="#FFFFFF" uuid="79183b71-a132-42a0-9975-5143c983b02d"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Caso#: " + $F{idcaso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="52" width="196" height="51" uuid="cd4fe3c0-17d7-41e1-b8e8-efb8d05f0030"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[No desechar este combrobante. Entregelo a un representante para la entrega de sus resultados o por algunar reclamación .]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

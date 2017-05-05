@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="161151ad-c053-4fc7-9fbb-31cb749b3ec6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Estatus">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{estado_caso}=="OBSERVACION"]]></conditionExpression>
+			<style backcolor="#339900"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT 
+	
+	--pat.nombre NOMBRE_PATOLOGO,
+	cas.idcaso ID_CASO,
+	cas.numero_reclamacion NUMERO_RECLAMACION_CASO,
+	frg.idfragmento ID_FRAGMENTO,
+	frg.origen ORIGEN_FRAGMENTO,
+	frs.idfrasco ID_FRASCO,
+	pac.nombre NOMBRE_PACIENTE,
+	pac.fecha_nacimiento FECHA_NACIMIENTO_PACIENTE,
+	cas.estado ESTADO_CASO
+	--emp.nombre NOMBRE_EMPLEADO,
+	--emp.apellido APELLIDO_EMPLEADO,
+	--med.nombre NOMBRE_MEDICO,
+	--reg.fecha FECHA_REGISTRO
+
+
+FROM patologia.caso cas
+	
+
+INNER JOIN patologia.fragmento frg
+	ON frg.idfragmento = cas.idfragmento
+	AND cas.idfragmento = frg.idfragmento
+INNER JOIN patologia.frasco frs
+	ON frg.idfrasco_frasco = frs.idfrasco
+INNER JOIN patologia.paciente pac
+	ON frs.idpaciente_paciente = pac.idpaciente
+	
+WHERE pac.is_borrado=false ]]>
+	</queryString>
+	<field name="id_caso" class="java.lang.Integer"/>
+	<field name="numero_reclamacion_caso" class="java.lang.String"/>
+	<field name="id_fragmento" class="java.lang.Integer"/>
+	<field name="origen_fragmento" class="java.lang.String"/>
+	<field name="id_frasco" class="java.lang.Integer"/>
+	<field name="nombre_paciente" class="java.lang.String"/>
+	<field name="fecha_nacimiento_paciente" class="java.sql.Date"/>
+	<field name="estado_caso" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#FF66CC" uuid="66707b03-a134-47ac-803b-1fb3e2bb0717"/>
+				<staticText>
+					<reportElement x="10" y="10" width="234" height="43" forecolor="#FFFFFF" uuid="ff9f4d73-aff5-4e16-8821-68f1a7e570ef"/>
+					<textElement>
+						<font fontName="Harlow Solid Italic" size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pathosystem]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="385" y="40" width="180" height="31" forecolor="#FFFFFF" uuid="bc0bfd57-79aa-4e86-9820-bcf01f4567af"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CASOS]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="e0b3c375-ce21-4522-abb8-b543b5f31fab"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="0" width="58" height="28" forecolor="#006699" backcolor="#E6E6E6" uuid="83d101fe-84e6-4035-98cc-61cbfc037ce8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Caso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="38" y="0" width="58" height="28" forecolor="#006699" backcolor="#E6E6E6" uuid="379292fe-0af8-46b2-8956-180cda53236e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Frag.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="96" y="0" width="128" height="28" forecolor="#006699" backcolor="#E6E6E6" uuid="5f2201d9-f38e-4376-9428-b63780e868d9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Origen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="224" y="0" width="217" height="28" forecolor="#006699" backcolor="#E6E6E6" uuid="a3f52fda-f105-4629-9782-09804e7965a8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paciente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="441" y="0" width="134" height="28" forecolor="#006699" backcolor="#E6E6E6" uuid="13584f04-5f12-4488-a314-11369c25d47a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estatus caso]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="36" width="595" height="1" uuid="011f9522-d501-476e-812f-739f1c3fc173"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dashed" lineColor="#FF66FF"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Estatus" mode="Opaque" x="-10" y="-1" width="38" height="37" forecolor="#000000" uuid="db392a72-be46-4d64-85a6-8ec76f3481f1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_caso}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="38" y="0" width="48" height="37" uuid="5cb76e3c-0627-4ff9-953f-6d287bac16d3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_fragmento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="96" y="0" width="118" height="37" uuid="52479c25-9a31-434b-bc03-c19eb640c923"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{origen_fragmento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="224" y="0" width="207" height="37" uuid="3dd9d093-cad2-44fb-9cec-905038aa8cb0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_paciente}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="441" y="-1" width="134" height="37" forecolor="#000000" backcolor="#FFFFFF" uuid="9b27177e-9d2b-4f6e-b3da-2e3d6067cee9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_caso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="-20" y="3" width="538" height="13" backcolor="#E6E6E6" uuid="5f77c707-a647-4342-b4bf-6aac56e802b3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="518" y="3" width="57" height="13" backcolor="#E6E6E6" uuid="677f9d45-c2c5-4bff-8366-1f84c20950cc"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="3" y="3" width="100" height="13" uuid="88d3c9d9-e1e7-40d3-9f35-1091d75a84a7"/>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy hh:mm aaa",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

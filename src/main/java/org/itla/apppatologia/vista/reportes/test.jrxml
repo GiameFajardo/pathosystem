@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="147ff3ff-e042-46b4-bb8e-6f691e7197f4">
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+	--ent.identrega,
+	--res.idresultado,
+	--tob.idtipo_observacion,
+	obs.idobservacion,
+	pat.idpatologo,
+	tip.idtipo_estudio,
+	est.idestudio,
+	med.idmedico,
+	frg.idfragmento,
+	pac.idpaciente,
+	cas.idcaso ID_CASO
+
+	
+FROM patologia.caso cas
+	
+--INNER JOIN patologia.registro reg
+--	ON reg.idcaso_caso = cas.idcaso
+
+
+INNER JOIN patologia.fragmento frg
+	ON frg.idfragmento = cas.idfragmento
+	AND cas.idfragmento = frg.idfragmento
+inner join patologia.tipo_fragmento tfg
+	on frg.idtipo_fragmento_tipo_fragmento = tfg.idtipo_fragmento
+inner join patologia.estado_fragmento efg
+	on frg.idestado_fragmento_estado_fragmento = efg.idestado_fragmento
+inner join patologia.medico  med
+	on med.idmedico = frg.idmedico_medico
+INNER JOIN patologia.frasco frs
+	ON frg.idfrasco_frasco = frs.idfrasco
+INNER JOIN patologia.paciente pac
+	ON frs.idpaciente_paciente = pac.idpaciente
+left JOIN patologia.estudio est
+	ON est.idfragmento_fragmento = frg.idfragmento
+left join patologia.tipo_estudio tip
+	on tip.idtipo_estudio = est.idtipo_estudio_tipo_estudio
+left join patologia.patologo pat
+	on pat.idpatologo = est.idpatologo_patologo
+ join patologia.observacion obs
+	on obs.idestudio_estudio = est.idestudio
+left join patologia.tipo_observacion tob
+	on obs.idtipo_observacion_tipo_observacion = tob.idtipo_observacion
+left join patologia.resultado res
+	on res.idestudio_estudio = est.idestudio
+left join patologia.entrega ent
+	on ent.idresultado_resultado = res.idresultado
+	
+WHERE pac.is_borrado=false ]]>
+	</queryString>
+	<field name="idobservacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del metodo]]></fieldDescription>
+	</field>
+	<field name="idpatologo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del patologo]]></fieldDescription>
+	</field>
+	<field name="idtipo_estudio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serail tipo de estudio]]></fieldDescription>
+	</field>
+	<field name="idestudio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial tipo estudio]]></fieldDescription>
+	</field>
+	<field name="idmedico" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del medico]]></fieldDescription>
+	</field>
+	<field name="idfragmento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serail del fragmento]]></fieldDescription>
+	</field>
+	<field name="idpaciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[serial del paciente]]></fieldDescription>
+	</field>
+	<field name="id_caso" class="java.lang.Integer"/>
+	<group name="idobservacion">
+		<groupExpression><![CDATA[$F{idobservacion}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
